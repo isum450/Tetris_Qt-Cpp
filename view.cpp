@@ -16,9 +16,6 @@ View::View(QWidget *parent)
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-    m_cursor = QCursor( QPixmap(":/images/cursor.png").scaled(16,16) );
-    setCursor(m_cursor);
-
     m_backgroundMusic = new QSoundEffect(this);
     m_backgroundMusic->setSource(QUrl("qrc:/music/background.wav"));
     m_backgroundMusic->setLoopCount(QSoundEffect::Infinite);
@@ -68,14 +65,6 @@ void View::keyPressEvent(QKeyEvent *event)
     {
         switch(event->key())
         {
-        case Qt::Key_M:
-        {
-            bool isMuted = !m_backgroundMusic->isMuted();
-            m_backgroundMusic->setMuted(isMuted);
-            m_gameScene->setMuted(isMuted);
-            m_settingsScene->setMusicInfo(isMuted);
-            break;
-        }
         case Qt::Key_Escape:
             QApplication::instance()->quit();
             break;

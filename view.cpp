@@ -16,12 +16,6 @@ View::View(QWidget *parent)
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-    m_backgroundMusic = new QSoundEffect(this);
-    m_backgroundMusic->setSource(QUrl("qrc:/music/background.wav"));
-    m_backgroundMusic->setLoopCount(QSoundEffect::Infinite);
-    m_backgroundMusic->setVolume(0.5f);
-    m_backgroundMusic->play();
-
     createConnections();
 }
 

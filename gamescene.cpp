@@ -191,6 +191,7 @@ void GameScene::drawScore()
     addItem(hundrethPartScoreItem);
 }
 
+/*
 void GameScene::drawGameState()
 {
     if(game.m_state == Game::State::Paused)
@@ -209,13 +210,12 @@ void GameScene::drawGameState()
         restartTextItem->setPos(16, 350);
     }
 }
-
+*/
 void GameScene::drawActiveFigure()
 {
     for (int i = 0; i < Game::COUNT_OF_BLOCKS; i++)
     {
-        QGraphicsPixmapItem* pixmapItem = new QGraphicsPixmapItem(game.m_tile.copy(game.m_colorNum * Game::BLOCK_SIZE.width(), 0,
-                                                                                   Game::BLOCK_SIZE.width(), Game::BLOCK_SIZE.height()));
+        QGraphicsPixmapItem* pixmapItem = new QGraphicsPixmapItem(game.m_tile.copy(game.m_colorNum * Game::BLOCK_SIZE.width(), 0, Game::BLOCK_SIZE.width(), Game::BLOCK_SIZE.height()));
         addItem(pixmapItem);
         pixmapItem->setPos(game.m_a[i].x * Game::BLOCK_SIZE.width(), game.m_a[i].y * Game::BLOCK_SIZE.height());
         pixmapItem->moveBy(m_frame->pos().x(), m_frame->pos().y());
@@ -297,8 +297,7 @@ void GameScene::update()
         {
             for (int i = 0; i < Game::COUNT_OF_BLOCKS; i++)
             {
-                //qDebug() << "game.m_b[i].y " << game.m_b[i].y << " game.m_b[i].x " << game.m_b[i].x;
-                game.m_field[game.m_b[i].y][game.m_b[i].x] = game.m_colorNum;
+
             }
 
             game.m_colorNum = (rand() % (Game::COUNT_OF_COLORS - 1)) + 1;
@@ -317,7 +316,7 @@ void GameScene::update()
 
         game.m_timer=0;
     }
-    ///////check lines//////////
+    //줄이 꽉 찼을 때 없애는 역할
     int k = game.BOARD_HEIGHT-1;
     for (int i = game.BOARD_HEIGHT-1; i > 0; i--)
     {
@@ -366,5 +365,5 @@ void GameScene::update()
 
     drawScore();
 
-    drawGameState();
+    //drawGameState();
 }
